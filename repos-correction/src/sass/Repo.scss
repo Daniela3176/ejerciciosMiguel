@@ -1,0 +1,15 @@
+  .box {
+  background-color: #f2f2f2;
+  min-width: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  font-size: calc(3px + 2vmin);
+  line-height: 4vh;
+  color: #282c34;
+  padding: 5vh;
+  margin: 5vh;
+  border-radius: 2vh;
+  }
