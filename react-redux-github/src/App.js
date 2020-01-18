@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './App.scss';
+import SearchBox from './containers/SearchBox';
 import Repositories from './containers/Repositories';
 
 class App extends React.Component {
@@ -8,32 +9,33 @@ class App extends React.Component {
     super(props);
     this.state = {
       typed: "",
-      isClicked: false,
+      isClicked: false
     };
   }
 
   async updateSearch(event) {
+    this.setState({ isClicked: false });
     await this.setState({ typed: event.target.value });
-    this.setState({isClicked: false});
   }
 
   async changeState() {
     await this.props.setName(this.state.typed)
     console.log(this.props.searched);
-    this.setState({isClicked: true});
+    this.setState({ isClicked: true });
   }
 
 
   render() {
-    if(!this.state.isClicked){
-    return (
-      <div>
-        <div className="header">
-          <input type="text" onChange={this.updateSearch.bind(this)} />
-          <button onClick={() => this.changeState()}>Search</button>
+    if (!this.state.isClicked) {
+      return (
+        <div>
+          <div className="header">
+            <SearchBox />
+            <input type="text" onChange={this.updateSearch.bind(this)} />
+            <button onClick={() => this.changeState()}>Search</button>
+          </div>
         </div>
-      </div>
-    );
+      );
     }
 
     return (
